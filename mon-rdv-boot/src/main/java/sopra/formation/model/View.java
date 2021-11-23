@@ -24,6 +24,9 @@ public class View {
 	public static class ViewPraticien {
 	}
 	
+	public static class ViewPraticienLieux {
+	}
+	
 	public static class ViewSpecialite {
 	}
 	
