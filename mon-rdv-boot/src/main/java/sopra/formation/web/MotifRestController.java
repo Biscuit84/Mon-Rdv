@@ -51,7 +51,7 @@ public class MotifRestController {
 		}
 	}
 
-	@GetMapping("{id}")
+	@GetMapping("{id}/PraticienId")
 	@JsonView(View.ViewMotif.class)
 	public List<Motif> findAllByPraticienId(@PathVariable Long id) {
 		List<Motif> motifs = motifRepo.findAllByPraticienId(id);
