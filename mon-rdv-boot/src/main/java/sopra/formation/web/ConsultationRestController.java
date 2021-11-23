@@ -89,6 +89,7 @@ public class ConsultationRestController {
 	}
 	
 	@GetMapping("{id}/FutureConsultPatient")
+	@JsonView(View.ViewConsultationPatient.class)
 	public List<Consultation> findConsultationByPatientWithDateFutur(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
 
@@ -96,6 +97,7 @@ public class ConsultationRestController {
 	}
 	
 	@GetMapping("{id}/AncienneConsultPatient")
+	@JsonView(View.ViewConsultationPatient.class)
 	public List<Consultation> findConsultationByPatientWithDatePast(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
 
@@ -103,12 +105,14 @@ public class ConsultationRestController {
 	}
 	
 	@GetMapping("{id}/FutureConsultPraticient")
+	@JsonView(View.ViewConsultationPraticien.class)
 	public List<Consultation> findConsultationByPraticienWithDateFutur(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDateFutur( praticienRepo.findById(id).get(), LocalDateTime.now());
 
 		return consultations;}
 	
 	@GetMapping("{id}/AncienneConsultPraticient")
+	@JsonView(View.ViewConsultationPraticien.class)
 	public List<Consultation> findConsultationByPraticienWithDatePast(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDatePast( praticienRepo.findById(id).get(), LocalDateTime.now());
 
