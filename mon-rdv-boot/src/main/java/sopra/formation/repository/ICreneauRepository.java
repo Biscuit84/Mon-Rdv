@@ -13,6 +13,6 @@ import sopra.formation.model.Motif;
 
 public interface ICreneauRepository extends JpaRepository<Creneau, Long> {
 
-	@Query("select c from Creneau c where c.motif.id = :idMotif and c.dispo = true")
-	List<Motif> findByMotif(@Param("idMotif") Long idMotif);
+/*	@Query("select c from Creneau c where c.motif.id = :idMotif and c.dispo = true")
+	List<Motif> findByMotif(@Param("idMotif") Long idMotif);*/
 }

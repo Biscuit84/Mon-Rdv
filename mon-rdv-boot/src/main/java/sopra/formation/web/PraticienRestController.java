@@ -51,8 +51,15 @@ public class PraticienRestController {
 	
 	@GetMapping("{id}/specialite")
 	@JsonView(View.ViewPraticienWithSpecialite.class)
-	public Praticien detail(@PathVariable Long id) {
+	public Praticien findPraticienWithSpecialite(@PathVariable Long id) {
 		Optional<Praticien> optPraticien = praticienRepo.findByIdWithSpecilite(id);
+		
+		if (optPraticien.isPresent()) {
+			return optPraticien.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Praticien non trouvé");
+		}
+	}
 
 	@PostMapping("")
 	@JsonView(View.ViewPraticien.class)

@@ -12,7 +12,7 @@ public interface IMotifRepository extends JpaRepository<Motif, Long> {
 
 	@Query("select m from Motif m join Specialite s where s.praticien.id = :id")
 	List<Motif> findAllByPraticienId(@Param("id") Long id);
-	@Query("select m from Motif m where m.specialite.id = :idSpecialite")
+		@Query("select m from Motif m where m.specialite.id = :idSpecialite")
 	List<Motif> findBySpecialite(@Param("idSpecialite") Long idSpecialite);
 	
 }

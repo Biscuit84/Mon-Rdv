@@ -84,6 +84,7 @@ public class ConsultationRestController {
 		consultationRepo.deleteById(id);
 	}
 	
+	
 	public List<Consultation> findConsultationByPatientWithDateFutur(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
 
