@@ -10,7 +10,7 @@ import sopra.formation.model.Praticien;
 
 public interface IPraticienRepository extends JpaRepository<Praticien, Long> {
 	
-	@Query("select distinct p from Praticien p left join fetch p.specialite s where p.id = :id")
+	@Query("select p from Praticien p left join fetch p.specialites s where p.id = :id")
 	Optional<Praticien> findByIdWithSpecilite(@Param("id") Long id);
 
 	/*	@Query("select distinct p from Praticien p left join fetch p.lieux l where p.id = :id")

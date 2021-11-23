@@ -49,7 +49,7 @@ public class PraticienRestController {
 		}
 	}
 	
-	@GetMapping("{id}/specialite")
+	@GetMapping("{id}/specialites")
 	@JsonView(View.ViewPraticienWithSpecialite.class)
 	public Praticien findPraticienWithSpecialite(@PathVariable Long id) {
 		Optional<Praticien> optPraticien = praticienRepo.findByIdWithSpecilite(id);
