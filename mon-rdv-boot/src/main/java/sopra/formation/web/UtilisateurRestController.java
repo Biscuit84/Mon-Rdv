@@ -50,6 +50,30 @@ public class UtilisateurRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
 		}
 	}
+	
+	@GetMapping("{email}")
+	@JsonView(View.ViewUtilisateurByEmail.class)
+	public Utilisateur findByEmail(@PathVariable String email) {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findUtilisateurByEmail(email);
+
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
+		}
+	}
+	
+	@GetMapping("{motDePasse}")
+	@JsonView(View.ViewUtilisateurByMotDePasse.class)
+	public Utilisateur findByMotDePasse(@PathVariable String motDePasse) {
+		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findUtilisateurByMotDePasse(motDePasse);
+
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
+		}
+	}
 
 	@PostMapping("")
 	@JsonView(View.ViewUtilisateur.class)

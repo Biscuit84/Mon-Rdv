@@ -34,7 +34,13 @@ public class View {
 	public static class ViewSpecialite {
 	}
 	
-	public static class ViewUtilisateur {
+	public static class ViewUtilisateur extends ViewCommon{
+	}
+	
+	public static class ViewUtilisateurByEmail extends ViewUtilisateur{
+	}
+	
+	public static class ViewUtilisateurByMotDePasse extends ViewUtilisateur{
 	}
 	
 }
