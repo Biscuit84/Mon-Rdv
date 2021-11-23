@@ -40,7 +40,7 @@ public class UtilisateurRestController {
 	}
 
 	@GetMapping("{id}")
-	//@JsonView(View.ViewUtilisateurDetail.class)
+	@JsonView(View.ViewUtilisateur.class)
 	public Utilisateur find(@PathVariable Long id) {
 		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findById(id);
 

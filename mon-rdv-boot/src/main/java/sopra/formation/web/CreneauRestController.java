@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopra.formation.model.Creneau;
 import sopra.formation.model.View;
 import sopra.formation.repository.ICreneauRepository;
+import sopra.formation.repository.IPraticienRepository;
 
 
 
@@ -32,6 +33,8 @@ public class CreneauRestController {
 	
 	@Autowired
 	private ICreneauRepository creneauRepo;
+	@Autowired
+	private IPraticienRepository praticienRepo;
 
 	@GetMapping("")
 	@JsonView(View.ViewCreneau.class)
@@ -84,5 +87,13 @@ public class CreneauRestController {
 		creneauRepo.deleteById(id);
 	}
 	
+	@GetMapping("{id}/Duree")
+	@JsonView(View.ViewCreneau.class)
+	public Integer findDureeCreneauByPraticien(@PathVariable Long id) {
+		Creneau optCreneau = creneauRepo.findDureeCreneauByPraticien(praticienRepo.findById(id).get());
 
+		
+			return optCreneau.getDuree();
+		
+	}
 }

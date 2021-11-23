@@ -23,6 +23,7 @@ import sopra.formation.model.Consultation;
 import sopra.formation.model.View;
 import sopra.formation.repository.IConsultationRepository;
 import sopra.formation.repository.IPatientRepository;
+import sopra.formation.repository.IPraticienRepository;
 
 @RestController
 @RequestMapping("/consultation")
@@ -31,7 +32,10 @@ public class ConsultationRestController {
 
 	@Autowired
 	private IConsultationRepository consultationRepo;
+	@Autowired
 	private IPatientRepository patientRepo;
+	@Autowired
+	private IPraticienRepository praticienRepo;
 	
 	@GetMapping("")
 	@JsonView(View.ViewConsultation.class)
@@ -84,16 +88,30 @@ public class ConsultationRestController {
 		consultationRepo.deleteById(id);
 	}
 	
-	
+	@GetMapping("{id}/FutureConsultPatient")
 	public List<Consultation> findConsultationByPatientWithDateFutur(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
 
 		return consultations;
 	}
+	
+	@GetMapping("{id}/AncienneConsultPatient")
 	public List<Consultation> findConsultationByPatientWithDatePast(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
 
 		return consultations;
 	}
+	
+	@GetMapping("{id}/FutureConsultPraticient")
+	public List<Consultation> findConsultationByPraticienWithDateFutur(@PathVariable Long id) {
+		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDateFutur( praticienRepo.findById(id).get(), LocalDateTime.now());
+
+		return consultations;}
+	
+	@GetMapping("{id}/AncienneConsultPraticient")
+	public List<Consultation> findConsultationByPraticienWithDatePast(@PathVariable Long id) {
+		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDatePast( praticienRepo.findById(id).get(), LocalDateTime.now());
+
+		return consultations;}
 
 }
