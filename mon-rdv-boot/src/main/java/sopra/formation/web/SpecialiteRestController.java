@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.formation.model.Specialite;
+import sopra.formation.model.View;
 import sopra.formation.repository.ISpecialiteRepository;
 
 @RestController
@@ -39,7 +40,7 @@ public class SpecialiteRestController {
 	}
 
 	@GetMapping("{id}")
-	@JsonView(View.ViewSpecialiteDetail.class)
+	@JsonView(View.ViewSpecialite.class)
 	public Specialite find(@PathVariable Long id) {
 		Optional<Specialite> optSpecialite = specialiteRepo.findById(id);
 

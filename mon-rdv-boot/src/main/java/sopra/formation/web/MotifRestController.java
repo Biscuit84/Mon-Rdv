@@ -20,6 +20,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import sopra.formation.model.Motif;
+import sopra.formation.model.View;
 import sopra.formation.repository.IMotifRepository;
 
 @RestController
@@ -39,7 +40,7 @@ public class MotifRestController {
 	}
 
 	@GetMapping("{id}")
-	@JsonView(View.ViewMotifDetail.class)
+	@JsonView(View.ViewMotif.class)
 	public Motif find(@PathVariable Long id) {
 		Optional<Motif> optMotif = motifRepo.findById(id);
 
