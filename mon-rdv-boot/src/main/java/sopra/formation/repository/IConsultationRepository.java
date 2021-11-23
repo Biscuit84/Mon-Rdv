@@ -20,8 +20,8 @@ public interface IConsultationRepository extends JpaRepository<Consultation, Lon
 	List<Consultation> findConsultationByPatientWithDateFutur(@Param("idPatient") Patient patient, @Param("now") LocalDateTime date);
 	@Query("select c from Consultation c join c.creneaux cr where c.patient.id = :idPatient and cr.debut< :now")
 	List<Consultation> findConsultationByPatientWithDatePast(@Param("idPatient") Patient patient, @Param("now") LocalDateTime date);
-	@Query("select c from Consultation c join c.creneaux cr where c.praticien.id = :idPraticien and cr.debut> :now")
+	@Query("select c from Consultation c join c.creneaux cr where cr.praticien.id = :idPraticien and cr.debut> :now")
 	List<Consultation> findConsultationByPraticienWithDateFutur(@Param("idPraticien") Praticien praticien, @Param("now") LocalDateTime date);
-	@Query("select c from Consultation c join c.creneaux cr where c.praticien.id = :idPraticien and cr.debut< :now")
+	@Query("select c from Consultation c join c.creneaux cr where cr.praticien.id = :idPraticien and cr.debut< :now")
 	List<Consultation> findConsultationByPraticienWithDatePast(@Param("idPraticien") Praticien praticien, @Param("now") LocalDateTime date);
 }
