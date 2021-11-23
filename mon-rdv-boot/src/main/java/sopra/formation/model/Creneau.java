@@ -10,7 +10,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
+@JsonView(View.ViewCommon.class)
 public class Creneau {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

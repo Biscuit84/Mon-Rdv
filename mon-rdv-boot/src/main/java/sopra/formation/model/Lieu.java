@@ -14,7 +14,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
+@JsonView(View.ViewCommon.class)
 public class Lieu {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,7 +3,10 @@ package sopra.formation.model;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Embeddable
+@JsonView(View.ViewCommon.class)
 public class Adresse {
 	@Column(length = 255)
 	private String voie;
