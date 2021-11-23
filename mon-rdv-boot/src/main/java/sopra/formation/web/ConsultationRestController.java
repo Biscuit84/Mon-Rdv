@@ -23,6 +23,7 @@ import sopra.formation.model.Consultation;
 import sopra.formation.model.View;
 import sopra.formation.repository.IConsultationRepository;
 import sopra.formation.repository.IPatientRepository;
+import sopra.formation.repository.IPraticienRepository;
 
 @RestController
 @RequestMapping("/consultation")
@@ -31,7 +32,10 @@ public class ConsultationRestController {
 
 	@Autowired
 	private IConsultationRepository consultationRepo;
+	@Autowired
 	private IPatientRepository patientRepo;
+	@Autowired
+	private IPraticienRepository praticienRepo;
 	
 	@GetMapping("")
 	@JsonView(View.ViewConsultation.class)
@@ -94,5 +98,15 @@ public class ConsultationRestController {
 
 		return consultations;
 	}
+	
+	public List<Consultation> findConsultationByPraticienWithDateFutur(@PathVariable Long id) {
+		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDateFutur( praticienRepo.findById(id).get(), LocalDateTime.now());
+
+		return consultations;}
+	
+	public List<Consultation> findConsultationByPraticienWithDatePast(@PathVariable Long id) {
+		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDatePast( praticienRepo.findById(id).get(), LocalDateTime.now());
+
+		return consultations;}
 
 }
