@@ -18,7 +18,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-
 import sopra.formation.model.Praticien;
 import sopra.formation.model.View;
 import sopra.formation.repository.IPraticienRepository;
@@ -31,6 +30,7 @@ public class PraticienRestController {
 	private IPraticienRepository praticienRepo;
 
 	@GetMapping("")
+	@JsonView(View.ViewPraticien.class)
 	public List<Praticien> findAll() {
 		List<Praticien> praticiens = praticienRepo.findAll();
 
@@ -38,6 +38,7 @@ public class PraticienRestController {
 	}
 
 	@GetMapping("{id}")
+	@JsonView(View.ViewPraticien.class)
 	public Praticien find(@PathVariable Long id) {
 		Optional<Praticien> optPraticien = praticienRepo.findById(id);
 
@@ -53,15 +54,8 @@ public class PraticienRestController {
 	public Praticien detail(@PathVariable Long id) {
 		Optional<Praticien> optPraticien = praticienRepo.findByIdWithSpecilite(id);
 
-		if (optPraticien.isPresent()) {
-			return optPraticien.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Praticien non trouvé");
-		}
-	}
-
-
 	@PostMapping("")
+	@JsonView(View.ViewPraticien.class)
 	public Praticien create( @RequestBody Praticien praticien) {
 		
 		
@@ -71,6 +65,7 @@ public class PraticienRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(View.ViewPraticien.class)
 	public Praticien update(@PathVariable Long id, @RequestBody Praticien praticien) {
 		if (!praticienRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Praticien non trouvé");
@@ -82,6 +77,7 @@ public class PraticienRestController {
 	}
 	
 	@DeleteMapping("/{id}")
+	@JsonView(View.ViewPraticien.class)
 	public void delete(@PathVariable Long id) {
 		if (!praticienRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Praticien non trouvé");

@@ -28,6 +28,9 @@ public class View {
 	public static class ViewPraticienWithSpecialite extends ViewPraticien {
 	}
 	
+	public static class ViewPraticienLieux {
+	}
+	
 	public static class ViewSpecialite {
 	}
 	

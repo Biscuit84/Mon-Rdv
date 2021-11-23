@@ -50,6 +50,7 @@ public class Praticien {
 	private List<Specialite> specialites = new ArrayList<Specialite>();
 	@OneToMany(mappedBy = "praticien")
 	private List<Creneau> creneaux = new ArrayList<Creneau>();
+	@JsonView(View.ViewPraticienLieux.class)
 	@OneToMany(mappedBy = "praticien")
 	private List<Lieu> lieux = new ArrayList<Lieu>();
 	@OneToOne
