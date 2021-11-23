@@ -87,6 +87,8 @@ public class CreneauRestController {
 		creneauRepo.deleteById(id);
 	}
 	
+	@GetMapping("{id}/Duree")
+	@JsonView(View.ViewCreneau.class)
 	public Integer findDureeCreneauByPraticien(@PathVariable Long id) {
 		Creneau optCreneau = creneauRepo.findDureeCreneauByPraticien(praticienRepo.findById(id).get());
 

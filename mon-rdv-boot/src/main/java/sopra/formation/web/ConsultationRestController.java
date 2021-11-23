@@ -88,22 +88,27 @@ public class ConsultationRestController {
 		consultationRepo.deleteById(id);
 	}
 	
+	@GetMapping("{id}/FutureConsultPatient")
 	public List<Consultation> findConsultationByPatientWithDateFutur(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
 
 		return consultations;
 	}
+	
+	@GetMapping("{id}/AncienneConsultPatient")
 	public List<Consultation> findConsultationByPatientWithDatePast(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
 
 		return consultations;
 	}
 	
+	@GetMapping("{id}/FutureConsultPraticient")
 	public List<Consultation> findConsultationByPraticienWithDateFutur(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDateFutur( praticienRepo.findById(id).get(), LocalDateTime.now());
 
 		return consultations;}
 	
+	@GetMapping("{id}/AncienneConsultPraticient")
 	public List<Consultation> findConsultationByPraticienWithDatePast(@PathVariable Long id) {
 		List<Consultation> consultations = consultationRepo.findConsultationByPraticienWithDatePast( praticienRepo.findById(id).get(), LocalDateTime.now());
 

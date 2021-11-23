@@ -19,7 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 import sopra.formation.model.Lieu;
+import sopra.formation.model.View;
 import sopra.formation.repository.ILieuRepository;
 
 
@@ -32,6 +35,7 @@ public class LieuRestController {
 	private ILieuRepository lieuRepo;
 
 	@GetMapping("")
+	@JsonView(View.ViewLieu.class)
 	public List<Lieu> findAll() {
 		List<Lieu> lieus = lieuRepo.findAll();
 
@@ -39,6 +43,7 @@ public class LieuRestController {
 	}
 
 	@GetMapping("{id}")
+	@JsonView(View.ViewLieu.class)
 	public Lieu find(@PathVariable Long id) {
 		Optional<Lieu> optLieu = lieuRepo.findById(id);
 
@@ -50,6 +55,7 @@ public class LieuRestController {
 	}
 
 	@PostMapping("")
+	@JsonView(View.ViewLieu.class)
 	public Lieu create( @RequestBody Lieu lieu) {
 		
 		
@@ -59,6 +65,7 @@ public class LieuRestController {
 	}
 
 	@PutMapping("/{id}")
+	@JsonView(View.ViewLieu.class)
 	public Lieu update(@PathVariable Long id, @RequestBody Lieu lieu) {
 		if (!lieuRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lieu non trouvé");
