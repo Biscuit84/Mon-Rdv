@@ -16,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 import sopra.formation.model.Praticien;
+import sopra.formation.model.View;
 import sopra.formation.repository.IPraticienRepository;
 
 @RestController
@@ -43,6 +47,19 @@ public class PraticienRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Praticien non trouvé");
 		}
 	}
+	
+	@GetMapping("{id}/specialite")
+	@JsonView(View.ViewPraticienWithSpecialite.class)
+	public Praticien detail(@PathVariable Long id) {
+		Optional<Praticien> optPraticien = praticienRepo.findByIdWithSpecilite(id);
+
+		if (optPraticien.isPresent()) {
+			return optPraticien.get();
+		} else {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Praticien non trouvé");
+		}
+	}
+
 
 	@PostMapping("")
 	public Praticien create( @RequestBody Praticien praticien) {

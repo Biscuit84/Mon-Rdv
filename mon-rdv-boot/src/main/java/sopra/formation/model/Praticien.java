@@ -17,6 +17,8 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.formation.model.View.ViewPraticienWithSpecialite;
+
 @Entity
 @JsonView(View.ViewCommon.class)
 public class Praticien {
@@ -44,6 +46,7 @@ public class Praticien {
 	private boolean espece;
 	private Integer dureeCreneau;
 	@OneToMany(mappedBy = "praticien")
+	@JsonView(ViewPraticienWithSpecialite.class)
 	private List<Specialite> specialites = new ArrayList<Specialite>();
 	@OneToMany(mappedBy = "praticien")
 	private List<Creneau> creneaux = new ArrayList<Creneau>();

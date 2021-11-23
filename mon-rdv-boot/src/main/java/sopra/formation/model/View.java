@@ -1,6 +1,7 @@
 package sopra.formation.model;
 
 
+
 public class View {
 
 	public static class ViewCommon {
@@ -22,6 +23,9 @@ public class View {
 	}
 	
 	public static class ViewPraticien {
+	}
+	
+	public static class ViewPraticienWithSpecialite extends ViewPraticien {
 	}
 	
 	public static class ViewSpecialite {
