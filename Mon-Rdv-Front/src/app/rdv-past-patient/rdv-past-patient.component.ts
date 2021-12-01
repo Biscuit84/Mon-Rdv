@@ -18,6 +18,7 @@ export class RdvPastPatientComponent implements OnInit {
   }
 
   list(): Array<Consultation> {
+    console.log(this.rdvPastPatient.findAll());
     return this.rdvPastPatient.findAll();
   }
 

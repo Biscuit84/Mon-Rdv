@@ -99,7 +99,7 @@ public class ConsultationRestController {
 	@GetMapping("{id}/AncienneConsultPatient")
 	@JsonView(View.ViewConsultationPatient.class)
 	public List<Consultation> findConsultationByPatientWithDatePast(@PathVariable Long id) {
-		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDateFutur( patientRepo.findById(id).get(), LocalDateTime.now());
+		List<Consultation> consultations = consultationRepo.findConsultationByPatientWithDatePast( id);
 
 		return consultations;
 	}
