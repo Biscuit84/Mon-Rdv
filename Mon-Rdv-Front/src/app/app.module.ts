@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { PraticienComponent } from './praticien/praticien.component';
 import { MotifComponent } from './motif/motif.component';
+import { PatientComponent } from './patient/patient.component';
 
 @NgModule({
   declarations: [
     ConsultationComponent,
     AppComponent,
+    PatientComponent,
     PraticienComponent,
     MotifComponent
   ],
