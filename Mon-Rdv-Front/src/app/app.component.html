@@ -7,23 +7,32 @@
   </ul>
   <ul class="navbar-nav" *ngIf="utilisateurConnect.type=='PRATICIEN'">
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/praticien']" routerLinkActive="active">Accueil</a>
+      <a class="nav-link" [routerLink]="['/accueilprati']" routerLinkActive="active">Accueil</a>
   </li>
   <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/praticien']" routerLinkActive="active">Accueil</a>
+      <a class="nav-link" [routerLink]="['/rdvPast']" routerLinkActive="active">RDV Passé</a>
   </li>
   <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/praticien']" routerLinkActive="active">Accueil</a>
+      <a class="nav-link" [routerLink]="['/rdvFutur']" routerLinkActive="active">RDV Futur</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" [routerLink]="['/praticien']" routerLinkActive="active">Accueil</a>
+    <a class="nav-link" [routerLink]="['/info']" routerLinkActive="active">Info</a>
   </li>
 
       
 </ul>
 <ul class="navbar-nav" *ngIf="utilisateurConnect.type=='PATIENT'">
   <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/patient']" routerLinkActive="active">Se Connecter</a>
+    <a class="nav-link" [routerLink]="['/accueilpatient']" routerLinkActive="active">Accueil</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/rdvPast']" routerLinkActive="active">RDV Passé</a>
+  </li>
+  <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/rdvFutur']" routerLinkActive="active">RDV Futur</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" [routerLink]="['/info']" routerLinkActive="active">Info</a>
   </li>
     
 </ul>

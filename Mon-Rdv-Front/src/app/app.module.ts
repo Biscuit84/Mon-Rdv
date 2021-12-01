@@ -21,7 +21,6 @@ import { PatientHttpService } from './patient/patient-http.service';
 import { PraticienHttpService } from './praticien/praticien-http.service';
 import { SpecialiteHttpService } from './specialite/specialite-http.service';
 import { UtilisateurHttpService } from './utilisateur/utilisateur-http.service';
-import { RecherchePraticienComponent } from './recherche-praticien/recherche-praticien.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +33,6 @@ import { RecherchePraticienComponent } from './recherche-praticien/recherche-pra
     PraticienComponent,
     SpecialiteComponent,
     UtilisateurComponent,
-    RecherchePraticienComponent
   ],
   imports: [
     BrowserModule,
