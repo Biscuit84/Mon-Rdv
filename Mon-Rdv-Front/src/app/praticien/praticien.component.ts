@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Praticien, Specialite, Creneau, Lieu, Utilisateur } from '../module';
 
 import { AppConfigService } from '../app-config.service';
-import { PraticienService } from './praticien.service';
+import { PraticienHttpService } from './praticien-http.service';
 //import { AppConfigService } from './../app-config.service';
 //import { SpecialiteService } from './specialite.service';
 //import { CreneauService } from './creneau.service';
@@ -20,7 +20,7 @@ export class PraticienComponent implements OnInit {
   civilites: Array<String> = new Array<String>();
   filtre: string;
 
-  constructor(private appConfig: AppConfigService,private praticienService: PraticienService) { 
+  constructor(private appConfig: AppConfigService,private praticienService: PraticienHttpService) { 
     this.loadCivilites();
   }
 

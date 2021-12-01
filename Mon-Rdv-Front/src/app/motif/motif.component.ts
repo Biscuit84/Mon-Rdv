@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Motif } from '../module';
 
-import { MotifService } from './motif.service';
+import { MotifHttpService } from './motif-http.service';
 
 @Component({
   selector: 'app-motif',
@@ -13,7 +13,7 @@ export class MotifComponent implements OnInit {
   motifForm: Motif;
   filtre: string;
 
-  constructor(private motifService: MotifService) { }
+  constructor(private motifService: MotifHttpService) { }
 
   ngOnInit(): void {
   }
