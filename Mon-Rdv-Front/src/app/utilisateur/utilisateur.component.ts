@@ -56,8 +56,8 @@ export class UtilisateurComponent implements OnInit {
     this.utilisateurService.deleteById(id);
   }
 
- /* auth() {
+  auth(email: string, password: string) {
     this.utilisateurService.auth(email, password)
-  }*/
+  }
 
 }
