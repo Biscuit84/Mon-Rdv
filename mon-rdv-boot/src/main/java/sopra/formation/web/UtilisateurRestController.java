@@ -22,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import sopra.formation.model.Utilisateur;
 import sopra.formation.model.View;
 import sopra.formation.repository.IUtilisateurRepository;
+import sopra.formation.web.dto.ConnexionDTO;
 
 @RestController
 @RequestMapping("/utilisateur")
@@ -51,29 +52,7 @@ public class UtilisateurRestController {
 		}
 	}
 	
-	@GetMapping("{email}")
-	@JsonView(View.ViewUtilisateurByEmail.class)
-	public Utilisateur findByEmail(@PathVariable String email) {
-		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findUtilisateurByEmail(email);
-
-		if (optUtilisateur.isPresent()) {
-			return optUtilisateur.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
-		}
-	}
 	
-	@GetMapping("{motDePasse}")
-	@JsonView(View.ViewUtilisateurByMotDePasse.class)
-	public Utilisateur findByMotDePasse(@PathVariable String motDePasse) {
-		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findUtilisateurByMotDePasse(motDePasse);
-
-		if (optUtilisateur.isPresent()) {
-			return optUtilisateur.get();
-		} else {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Utilisateur non trouvé");
-		}
-	}
 
 	@PostMapping("")
 	@JsonView(View.ViewUtilisateur.class)
@@ -107,5 +86,20 @@ public class UtilisateurRestController {
 
 		utilisateurRepo.deleteById(id);
 	}
+	
+	@PostMapping("/connexion")
+	@JsonView(View.ViewUtilisateur.class)
+	public Utilisateur connect(@RequestBody ConnexionDTO connexion) {
+		
+		Optional<Utilisateur> optUtilisateur = utilisateurRepo.findUtilisateurByEmailAndPassword(connexion.getEmail(), connexion.getPassword());
+		
+		if (optUtilisateur.isPresent()) {
+			return optUtilisateur.get();
+		}
+		else {throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Identifiants invalides !");}
+		
+	}
+	
+
 	
 }

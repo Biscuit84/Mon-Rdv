@@ -1,4 +1,58 @@
-barre de recherche par non ou spé
 
-se Connecter => form de connexion
+    <script type="text/javascript">
+        function storage() {
+            var key = "user";
+            var valeur = document.getElementById("in").value; 
+            sessionStorage.setItem(key, valeur);   
+            document.getElementById("out").innerHTML = sessionStorage.getItem("clé");
+            var valeur = document.getElementById("in").value = "";
+        }
+        function storage2() {
+            document.getElementById("out").innerHTML = sessionStorage.getItem("clé");
+    
+        }
+    </script>
+
+
+
+<body onload="storage2()">
+    <h3>sessionstorage</h3>
+    <input type="text" id="in"><br>
+    <button onclick="storage()">sessionStorage</button>
+    <div id="box"><span id="out"></span>&nbsp;</div>
+</body>
+
+<div class="navigation-container">
+
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h2 class="row titre">Connexion</h2>
+            <div class="row">
+                <div class="col-2"></div>
+                <form class="col-8">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            [(ngModel)]="utilisateurForm.email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password"
+                            [(ngModel)]="utilisateurForm.motDePasse">
+                    </div>
+                    <a id="mot-de-passe-oublie" href="">Mot de passe oublié</a>
+                    <div id="btn-connect-container">
+                        <button class="btn btn-primary rounded-pill" id="btn-connect" (click)="auth()">Se
+                            connecter</button>
+                    </div>
+
+                </form>
+                <div class="col-2"></div>
+            </div>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+</div>
 

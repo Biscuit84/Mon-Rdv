@@ -10,7 +10,7 @@ import { UtilisateurHttpService } from './utilisateur-http.service';
 })
 export class UtilisateurComponent implements OnInit {
 
-  utlisateurForm: Utilisateur = null;
+  utilisateurForm: Utilisateur = null;
   civilites: Array<String> = new Array<String>();
 
   constructor(private appConfig: AppConfigService, private utilisateurService: UtilisateurHttpService) {
@@ -29,14 +29,14 @@ export class UtilisateurComponent implements OnInit {
  
 
   add() {
-    this.utlisateurForm = new Utilisateur();
+    this.utilisateurForm = new Utilisateur();
     
   
   }
 
   edit(id: number) {
     this.utilisateurService.findById(id).subscribe(resp => {
-      this.utlisateurForm = resp;
+      this.utilisateurForm = resp;
 
       
      
@@ -44,20 +44,24 @@ export class UtilisateurComponent implements OnInit {
   }
 
   save() {
-    if (!this.utlisateurForm.id) {
-      this.utilisateurService.create(this.utlisateurForm);
+    if (!this.utilisateurForm.id) {
+      this.utilisateurService.create(this.utilisateurForm);
     } else {
-      this.utilisateurService.modify(this.utlisateurForm);
+      this.utilisateurService.modify(this.utilisateurForm);
     }
-    this.utlisateurForm = null;
+    this.utilisateurForm = null;
   }
 
   cancel() {
-    this.utlisateurForm = null;
+    this.utilisateurForm = null;
   }
 
   delete(id: number) {
     this.utilisateurService.deleteById(id);
+  }
+
+  auth() {
+    
   }
 
 }
