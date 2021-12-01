@@ -259,6 +259,10 @@ export class Utilisateur{
     type:string
     praticien:Praticien
     patients:Array<Patient>=new Array<Patient>();
+    constructor(email?:string,motDePasse?:string){
+      this.email=email;
+      this.motDePasse=motDePasse;
+    }
 
 
 }

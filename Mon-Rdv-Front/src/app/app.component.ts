@@ -8,5 +8,5 @@ import { Utilisateur } from './module';
 })
 export class AppComponent {
   title = 'Mon-Rdv-Front';
-  utilisateurConnect:Utilisateur = new Utilisateur();
+  utilisateurConnect:Utilisateur;
 }

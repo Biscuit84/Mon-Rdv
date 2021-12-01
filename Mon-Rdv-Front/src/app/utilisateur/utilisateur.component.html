@@ -32,19 +32,19 @@
                 <div class="col-2"></div>
                 <form class="col-8">
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            [(ngModel)]="utilisateurForm.email">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp"
+                            [(ngModel)]="connexionDTOForm.email">
                     </div>
                     <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="password"
-                            [(ngModel)]="utilisateurForm.motDePasse">
+                        <label for="password" class="form-label">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            [(ngModel)]="connexionDTOForm.password">
                     </div>
+                    <span *ngIf="erreur">Identifiants invalide</span>
                     <a id="mot-de-passe-oublie" href="">Mot de passe oublié</a>
                     <div id="btn-connect-container">
-                        <!-- <button class="btn btn-primary rounded-pill" id="btn-connect" (click)="auth()">Se
-                            connecter</button> -->
+                         <button class="btn btn-primary rounded-pill" id="btn-connect" (click)="auth()">Se connecter</button> 
                     </div>
 
                 </form>

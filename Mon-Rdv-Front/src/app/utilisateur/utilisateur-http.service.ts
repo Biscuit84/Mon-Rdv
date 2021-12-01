@@ -11,10 +11,11 @@ export class UtilisateurHttpService {
 
   utilisateurs: Array<Utilisateur> = new Array<Utilisateur>();
   utilisateurUrl: string;
+  erreur:boolean=false;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     this.utilisateurUrl = this.appConfig.backEndUrl + "utilisateur/"
-    this.load();
+    // this.load();
   }
 
   findAll(): Array<Utilisateur> {
@@ -25,9 +26,6 @@ export class UtilisateurHttpService {
     return this.http.get<Utilisateur>(this.utilisateurUrl + id);
   }
 
-  auth(email: string, password: string): Observable<Utilisateur> {
-    return this.http.get<Utilisateur>(this.utilisateurUrl + "connexion/" + email + "/"+ password);
-  }
 
   create(utilisateur: Utilisateur) {
     this.http.post<Utilisateur>(this.utilisateurUrl, utilisateur).subscribe(resp => {
@@ -54,7 +52,11 @@ export class UtilisateurHttpService {
   }
 
   auth(connexionDTO:ConnexionDTO){
-    this.http.post<Utilisateur>(this.utilisateurUrl + '/connexion', connexionDTO).subscribe(response => {
-      sessionStorage.setItem('user',JSON.stringify(response))}, err => console.log(err));
+    this.http.post<Utilisateur>(this.utilisateurUrl + 'connexion', connexionDTO).subscribe(response => {
+      sessionStorage.setItem('user',JSON.stringify(response));
+    this.erreur=false;
+  }, err => {
+    this.erreur=true;
+    console.log(err);});
   }
 }
