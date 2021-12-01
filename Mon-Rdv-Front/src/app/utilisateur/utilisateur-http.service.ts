@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConfigService } from '../app-config.service';
-import { Utilisateur } from '../module';
+import { Utilisateur, ConnexionDTO } from '../module';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +51,10 @@ export class UtilisateurHttpService {
     this.http.get<Array<Utilisateur>>(this.utilisateurUrl).subscribe(response => {
       this.utilisateurs = response;
     }, error => console.log(error));
+  }
+
+  auth(connexionDTO:ConnexionDTO){
+    this.http.post<Utilisateur>(this.utilisateurUrl + '/connexion', connexionDTO).subscribe(response => {
+      sessionStorage.setItem('user',JSON.stringify(response))}, err => console.log(err));
   }
 }

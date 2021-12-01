@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from '../app-config.service';
-import { Adresse, Utilisateur } from '../module';
+import { Adresse, ConnexionDTO, Utilisateur } from '../module';
 import { UtilisateurHttpService } from './utilisateur-http.service';
 
 @Component({
@@ -56,8 +56,8 @@ export class UtilisateurComponent implements OnInit {
     this.utilisateurService.deleteById(id);
   }
 
-  auth(email: string, password: string) {
-    this.utilisateurService.auth(email, password)
+  auth() {
+    this.utilisateurService.auth(new ConnexionDTO(this.utilisateurForm.email,this.utilisateurForm.motDePasse));
   }
 
 }
