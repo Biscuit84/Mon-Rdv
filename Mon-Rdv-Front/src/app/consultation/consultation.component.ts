@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from '../app-config.service';
+import { Consultation } from '../module';
 import { ConsultationHttpService } from './conultation-http.service';
 
 @Component({
