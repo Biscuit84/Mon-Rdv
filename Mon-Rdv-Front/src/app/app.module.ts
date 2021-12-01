@@ -7,12 +7,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ConsultationComponent } from './consultation/consultation.component';
 import { PatientComponent } from './patient/patient.component';
+import { CreneauComponent } from './creneau/creneau.component';
+import { LieuComponent } from './lieu/lieu.component';
+import { MotifComponent } from './motif/motif.component';
+import { PraticienComponent } from './praticien/praticien.component';
+import { SpecialiteComponent } from './specialite/specialite.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ConsultationComponent,
-    PatientComponent
+    PatientComponent,
+    CreneauComponent,
+    LieuComponent,
+    MotifComponent,
+    PraticienComponent,
+    SpecialiteComponent,
+    UtilisateurComponent
   ],
   imports: [
     BrowserModule,
