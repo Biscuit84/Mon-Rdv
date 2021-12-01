@@ -18,12 +18,9 @@ const routes: Routes = [
   {path : "patient", component: PatientComponent},
   {path : "praticien", component: PraticienComponent},
   {path : "specialite", component: SpecialiteComponent},
-<<<<<<< Updated upstream
+  {path : "rdv-past-patient", component: RdvPastPatientComponent},
   {path : "utilisateur", component: UtilisateurComponent}
-=======
-  {path : "rdv-past-patient", component: RdvPastPatientComponent}
-  
->>>>>>> Stashed changes
+
 ];
 
 @NgModule({
