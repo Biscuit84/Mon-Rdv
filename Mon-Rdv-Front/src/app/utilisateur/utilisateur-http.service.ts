@@ -25,6 +25,10 @@ export class UtilisateurHttpService {
     return this.http.get<Utilisateur>(this.utilisateurUrl + id);
   }
 
+  auth(email: string, password: string): Observable<Utilisateur> {
+    return this.http.get<Utilisateur>(this.utilisateurUrl + "connexion/" + email + "/"+ password);
+  }
+
   create(utilisateur: Utilisateur) {
     this.http.post<Utilisateur>(this.utilisateurUrl, utilisateur).subscribe(resp => {
       this.load();

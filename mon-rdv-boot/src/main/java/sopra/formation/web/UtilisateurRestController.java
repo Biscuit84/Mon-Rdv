@@ -87,7 +87,7 @@ public class UtilisateurRestController {
 		utilisateurRepo.deleteById(id);
 	}
 	
-	@PostMapping("/connexion")
+	@PostMapping("/connexion/{email}/{password}")
 	@JsonView(View.ViewUtilisateur.class)
 	public Utilisateur connect(@RequestBody ConnexionDTO connexion) {
 		
