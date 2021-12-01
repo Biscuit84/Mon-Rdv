@@ -1,1 +1,45 @@
-<p>consultation works!</p>
+<div class="card mt-3">
+    <div class="card-header bg-info text-white">
+        <h2>Mon praticien</h2>
+    </div>
+    
+</div>
+<div class="card-body">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th>Praticien :</th>
+                <th>Téléphone</th>
+                <th>Secteur</th>
+                <th>carte Vitale</th>
+                <th>Cheque</th>
+                <th>Espèce</th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let praticien of list()">
+                <td></td>
+                <td></td>
+                <td> {{praticien.nom}} {{praticien.prenom}}</td>
+                <td>{{praticien.telephone}}</td>
+                <td>{{praticien.secteur}}</td>
+                <td>{{praticien.carteVitale}}</td>
+                <td>{{praticien.cheque}}</td>
+                <td>{{praticien.espece}}</td>
+                
+                
+                
+                <td>
+                    <div class="btn-group btn-group-sm">
+                        <a class="btn btn-primary" ><i class="bi bi-pencil-square"></i></a>
+                        <a class="btn btn-danger" ><i class="bi bi-trash"></i></a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

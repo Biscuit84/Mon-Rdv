@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from '../app-config.service';
-import { Consultation } from '../module';
-import { ConsultationHttpService } from './conultation-http.service';
+import { Consultation, Praticien } from '../module';
+import { ConsultationHttpService } from './consultation-http.service';
 
 @Component({
   selector: 'app-consultation',
@@ -11,6 +11,7 @@ import { ConsultationHttpService } from './conultation-http.service';
 export class ConsultationComponent implements OnInit {
 
   consultationForm: Consultation;
+  praticienForm : Praticien;
 
   constructor(private consultationService: ConsultationHttpService, private appConfig : AppConfigService ) {
    }
@@ -18,36 +19,27 @@ export class ConsultationComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  list(): Array<Consultation> {
+  list(): Array<Praticien> {
     return this.consultationService.findAll();
   }
 
   add() {
     this.consultationForm = new Consultation();
   }
+  monPraticien(id : number) {
+    this.consultationService.findPraticienById(id).subscribe(resp => {
+      this.praticienForm = resp;
 
-  edit(id: number) {
-    this.consultationService.findById(id).subscribe(response => {
-      this.consultationForm = response;
+           
     }, err => console.log(err));
+  };
+
   }
 
-  save() {
-    if(this.consultationForm.id) {
-      this.consultationService.modify(this.consultationForm);
-    } else {
-      this.consultationService.create(this.consultationForm);
-    }
+  
 
-    this.cancel();
-  }
+  
 
-  cancel() {
-    this.consultationForm = null;
-  }
+  
 
-  remove(id: number) {
-    this.consultationService.deleteById(id);
-  }
 
-}

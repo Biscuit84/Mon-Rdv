@@ -13,7 +13,7 @@ import { MotifComponent } from './motif/motif.component';
 import { PraticienComponent } from './praticien/praticien.component';
 import { SpecialiteComponent } from './specialite/specialite.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
-import { ConsultationHttpService } from './consultation/conultation-http.service';
+import { ConsultationHttpService } from './consultation/consultation-http.service';
 import { CreneauHttpService } from './creneau/creneau-http.service';
 import { LieuHttpService } from './lieu/lieu-http.service';
 import { MotifHttpService } from './motif/motif-http.service';
@@ -27,7 +27,6 @@ import { RecherchePraticienComponent } from './recherche-praticien/recherche-pra
   declarations: [
     ConsultationComponent,
     AppComponent,
-    ConsultationComponent,
     PatientComponent,
     CreneauComponent,
     LieuComponent,
