@@ -11,7 +11,7 @@ import { PatientComponent } from './patient/patient.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ConsultationComponent
+    ConsultationComponent,
     PatientComponent
   ],
   imports: [
