@@ -16,8 +16,7 @@ export class ConsultationHttpService{
     this.consultationUrl=this.appConfig.backEndUrl + "consultation/"
     this.load();
   }
-  ngOnInit(): void {
-  }
+ 
 
   findAll(): Array<Consultation>{
     return this.consultations;
