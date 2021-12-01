@@ -13,6 +13,14 @@ import { MotifComponent } from './motif/motif.component';
 import { PraticienComponent } from './praticien/praticien.component';
 import { SpecialiteComponent } from './specialite/specialite.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { ConsultationHttpService } from './consultation/conultation-http.service';
+import { CreneauHttpService } from './creneau/creneau-http.service';
+import { LieuHttpService } from './lieu/lieu-http.service';
+import { MotifHttpService } from './motif/motif-http.service';
+import { PatientHttpService } from './patient/patient-http.service';
+import { PraticienHttpService } from './praticien/praticien-http.service';
+import { SpecialiteHttpService } from './specialite/specialite-http.service';
+import { UtilisateurHttpService } from './utilisateur/utilisateur-http.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +40,7 @@ import { UtilisateurComponent } from './utilisateur/utilisateur.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ConsultationHttpService,CreneauHttpService,LieuHttpService,MotifHttpService,PatientHttpService,PraticienHttpService,SpecialiteHttpService,UtilisateurHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
