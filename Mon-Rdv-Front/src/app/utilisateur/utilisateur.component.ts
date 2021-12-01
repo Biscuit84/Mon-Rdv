@@ -24,10 +24,6 @@ export class UtilisateurComponent implements OnInit {
     return this.utilisateurService.findAll();
   }
 
-  
-
- 
-
   add() {
     this.utilisateurForm = new Utilisateur();
     

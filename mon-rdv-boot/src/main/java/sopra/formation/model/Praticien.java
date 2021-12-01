@@ -15,9 +15,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Version;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import sopra.formation.model.View.ViewPraticienWithCreneau;
 import sopra.formation.model.View.ViewPraticienWithSpecialite;
 
 @Entity
@@ -50,7 +50,7 @@ public class Praticien {
 	@JsonView(ViewPraticienWithSpecialite.class)
 	private List<Specialite> specialites = new ArrayList<Specialite>();
 	@OneToMany(mappedBy = "praticien")
-	
+	@JsonView(ViewPraticienWithCreneau.class)
 	private List<Creneau> creneaux = new ArrayList<Creneau>();
 	@JsonView(View.ViewPraticienLieux.class)
 	@OneToMany(mappedBy = "praticien")
