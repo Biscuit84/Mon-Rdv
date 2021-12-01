@@ -1,15 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConfigService } from '../app-config.service';
 import { Consultation } from '../module';
 
-@Component({
-  selector: 'app-consultation',
-  templateUrl: './consultation.component.html',
-  styleUrls: ['./consultation.component.scss']
+@Injectable({
+  providedIn: 'root'
 })
-export class ConsultationHttpService implements OnInit {
+export class ConsultationHttpService{
 
   consultations: Array<Consultation>=new Array<Consultation>();
   consultationUrl: string;
