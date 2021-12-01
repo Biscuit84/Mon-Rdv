@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from '../app-config.service';
-import { Adresse, Utilisateur } from '../module';
+import { Adresse, ConnexionDTO, Utilisateur } from '../module';
 import { UtilisateurHttpService } from './utilisateur-http.service';
 
 @Component({
@@ -57,7 +57,7 @@ export class UtilisateurComponent implements OnInit {
   }
 
   auth() {
-    
+    this.utilisateurService.auth(new ConnexionDTO(this.utilisateurForm.email,this.utilisateurForm.motDePasse));
   }
 
 }
