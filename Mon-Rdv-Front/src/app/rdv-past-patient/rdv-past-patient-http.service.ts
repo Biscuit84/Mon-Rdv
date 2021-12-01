@@ -10,7 +10,7 @@ export class RdvPastPatientHttpService {
   patient: Patient;
   consultations: Array<Consultation> = new Array<Consultation>();
   rdvPastPatientUrl: string;
-  idPatient: number = 5;
+  idPatient: number = 1;
 
   constructor(private http: HttpClient, private appConfig: AppConfigService) {
     this.rdvPastPatientUrl = this.appConfig.backEndUrl + "consultation/"
