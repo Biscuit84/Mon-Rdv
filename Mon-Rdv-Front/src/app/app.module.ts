@@ -21,7 +21,11 @@ import { PatientHttpService } from './patient/patient-http.service';
 import { PraticienHttpService } from './praticien/praticien-http.service';
 import { SpecialiteHttpService } from './specialite/specialite-http.service';
 import { UtilisateurHttpService } from './utilisateur/utilisateur-http.service';
+<<<<<<< Updated upstream
 import { RecherchePraticienComponent } from './recherche-praticien/recherche-praticien.component';
+=======
+import { RdvPastPatientComponent } from './rdv-past-patient/rdv-past-patient.component';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { RecherchePraticienComponent } from './recherche-praticien/recherche-pra
     PraticienComponent,
     SpecialiteComponent,
     UtilisateurComponent,
+<<<<<<< Updated upstream
     RecherchePraticienComponent
+=======
+    RdvPastPatientComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,

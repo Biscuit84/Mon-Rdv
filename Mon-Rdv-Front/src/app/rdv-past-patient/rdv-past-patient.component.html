@@ -1,0 +1,38 @@
+<div class="card mt-3">
+    <div class="card-header bg-info text-white">
+        <h2>Liste des RDV Passé</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Version</th>
+                    <th>Instruction</th>
+                    <th>Motif</th>
+                    <th>Patient</th>
+                    <th>Praticien</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rdv of list()">
+                    <td>{{rdv.id}}</td>
+                    <td>{{rdv.version}}</td>
+                    <td>{{rdv.instructions}}</td>
+                    <td>{{rdv.motif?.nom}}</td>
+                    <td>{{rdv.patient.nom}}</td>
+                    <td>{{rdv.creneaux[0].praticien?.nom}}</td>
+                    <td>
+                        <!-- <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(eval.id)"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="remove(eval.id)"><i class="bi bi-trash"></i></a>
+                        </div> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</div>
+

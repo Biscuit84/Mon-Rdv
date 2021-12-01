@@ -19,7 +19,7 @@ export class RecherchePraticienComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /*search(filtre: string) {
+  search(filtre: string) {
     if (filtre) {
       this.http.get<Array<Praticien>>(this.recherchePraticienUrl + "search/" + filtre).subscribe(response => {
         this.matieres = response;
@@ -27,5 +27,5 @@ export class RecherchePraticienComponent implements OnInit {
     } else {
       this.load();
     }
-  }*/
+  }
 }
