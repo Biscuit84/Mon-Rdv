@@ -1,44 +1,49 @@
-package sopra.formation.web;
+package disney.web;
+
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties.Admin;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import sopra.formation.model.Patient;
-import sopra.formation.model.View;
-import sopra.formation.repository.IPatientRepository;
 
-public class PatientRestController {
+@RestController
+@RequestMapping("/admin")
+@CrossOrigin("*")
+public class AdminRestController {
 
 	@Autowired
-	private IPatientRepository patientRepo;
+	private IAdminRepo adminRepo;
 	
 	@GetMapping("")
-	@JsonView(View.ViewPatient.class)
-	public List<Patient> findAll() {
-		List<Patient> patients = patientRepo.findAll();
+	@JsonView(View.ViewAdmin.class)
+	public List<Admin> findAll() {
+		List<Admin> admins = adminRepo.findAll();
 
-		return patients;
+		return admins;
 	}
 
 	@GetMapping("{id}")
-	@JsonView(View.ViewPatient.class)
-	public Patient find(@PathVariable Long id) {
-		Optional<Patient> optPatient = patientRepo.findById(id);
+	@JsonView(View.ViewAdmin.class)
+	public Admin find(@PathVariable Long id) {
+		Optional<Admin> optAdmin = adminRepo.findById(id);
 
-		if (optPatient.isPresent()) {
-			return optPatient.get();
+		if (optAdmin.isPresent()) {
+			return optAdmin.get();
 		} else {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Evaluation non trouvé");
 		}
@@ -46,32 +51,32 @@ public class PatientRestController {
 
 
 	@PostMapping("")
-	@JsonView(View.ViewPatient.class)
-	public Patient create(@RequestBody Patient patient) {
-		patient = patientRepo.save(patient);
+	@JsonView(View.ViewAdmin.class)
+	public Admin create(@RequestBody Admin admin) {
+		admin = adminRepo.save(admin);
 
-		return patient;
+		return admin;
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(View.ViewPatient.class)
-	public Patient update(@PathVariable Long id, @RequestBody Patient patient) {
-		if (!patientRepo.existsById(id)) {
+	@JsonView(View.ViewAdmin.class)
+	public Admin update(@PathVariable Long id, @RequestBody Admin admin) {
+		if (!adminRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Evaluation non trouvé");
 		}
 
-		patient = patientRepo.save(patient);
+		admin = adminRepo.save(admin);
 
-		return patient;
+		return admin;
 	}
 
 	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Long id) {
-		if (!patientRepo.existsById(id)) {
+		if (!adminRepo.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Evaluation non trouvé");
 		}
 		
-		patientRepo.deleteById(id);
+		adminRepo.deleteById(id);
 	}
 }
