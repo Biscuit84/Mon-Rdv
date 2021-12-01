@@ -1,0 +1,77 @@
+<div class="card mt-3">
+    <div class="card-header bg-info text-white">
+        <h2>Liste des matières</h2>
+        <input type="text" [ngModel]="filtre" (ngModelChange)="search($event)">
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Version</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let praticien of list()">
+                    <td>{{praticien.id}}</td>
+                    <td>{{praticien.version}}</td>
+                    <td>{{praticien.nom}}</td>
+                    <td>{{praticien.prenom}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(praticien.id)"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="remove(praticien.id)"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()">
+            <i class="bi bi-plus-square"></i>
+        </a>
+    </div>
+</div>
+
+<div class="card mt-3" *ngIf="praticienForm">
+    <div class="card-header bg-info text-white">
+        <h3>Edition de l'évaluation</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="praticienForm.nom" required #nom="ngModel" minlength="2">
+            <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert">
+
+                <div *ngIf="nom.errors?.['required']">
+                    Nom obligatoire !
+                </div>
+                <div *ngIf="nom.errors?.['minlength']">
+                    Nom : 2 caractères minimums
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prenom :</label>
+            <input type="text" class="form-control" id="prenom" [(ngModel)]="praticienForm.prenom">
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-end">
+            <a class="btn btn-success" (click)="save()">
+                <i class="bi bi-check-square"></i>
+            </a>
+            <a class="btn btn-warning" (click)="cancel()">
+                <i class="bi bi-backspace"></i>
+            </a>
+        </div>
+    </div>
+
+</div>

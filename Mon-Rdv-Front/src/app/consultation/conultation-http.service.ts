@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from '../app-config.service';
+import { Consultation } from '../module';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-consultation',

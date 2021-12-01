@@ -1,0 +1,77 @@
+<div class="card mt-3">
+    <div class="card-header bg-info text-white">
+        <h2>Liste des motifs</h2>
+        <input type="text" [ngModel]="filtre" (ngModelChange)="search($event)">
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Identifiant</th>
+                    <th>Version</th>
+                    <th>Nom</th>
+                    <th>nbCreneau</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let motif of list()">
+                    <td>{{motif.id}}</td>
+                    <td>{{motif.version}}</td>
+                    <td>{{motif.nom}}</td>
+                    <td>{{motif.nbCreneau}}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-primary" (click)="edit(motif.id)"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" (click)="remove(motif.id)"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-success btn-lg" (click)="add()">
+            <i class="bi bi-plus-square"></i>
+        </a>
+    </div>
+</div>
+
+<div class="card mt-3" *ngIf="motifForm">
+    <div class="card-header bg-info text-white">
+        <h3>Edition du motif</h3>
+    </div>
+
+    <div class="card-body">
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="text" class="form-control" id="nom" [(ngModel)]="motifForm.nom" required #nom="ngModel" minlength="2">
+            <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert">
+
+                <div *ngIf="nom.errors?.['required']">
+                    Nom obligatoire !
+                </div>
+                <div *ngIf="nom.errors?.['minlength']">
+                    Nom : 2 caractères minimums
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nbCreneau">Nombre de creneau :</label>
+            <input type="number" class="form-control" id="nbCreneau" [(ngModel)]="motifForm.nbCreneau">
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-end">
+            <a class="btn btn-success" (click)="save()">
+                <i class="bi bi-check-square"></i>
+            </a>
+            <a class="btn btn-warning" (click)="cancel()">
+                <i class="bi bi-backspace"></i>
+            </a>
+        </div>
+    </div>
+
+</div>

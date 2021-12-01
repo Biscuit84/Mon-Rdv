@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppConfigService } from '../app-config.service';
 import { ConsultationHttpService } from './conultation-http.service';
+import { Consultation } from '../module';
 
 @Component({
   selector: 'app-consultation',
